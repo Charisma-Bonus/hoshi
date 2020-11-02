@@ -2,6 +2,7 @@ const Akairo = require('discord-akairo');
 const { Command } = Akairo;
 const Discord = require('discord.js');
 const Star = require('../../models/stars');
+const botName = require('../../../config.json').botName;
 
 class StatsCommand extends Command {
 	constructor() {
@@ -9,7 +10,7 @@ class StatsCommand extends Command {
 			aliases: ['stats'],
 			category: 'general',
 			clientPermissions: ['EMBED_LINKS'],
-			description: { content: 'Displays Hoshi\'s statistics.' }
+			description: { content: `Displays ${botName}\'s statistics.` }
 		});
 	}
 

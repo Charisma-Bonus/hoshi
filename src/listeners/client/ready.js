@@ -1,6 +1,7 @@
 const { Listener } = require('discord-akairo');
 const Logger = require('../../util/Logger');
 const Starboard = require('../../struct/Starboard');
+const botName = require('../../../config.json').botName;
 
 class ReadyListener extends Listener {
 	constructor() {
@@ -13,7 +14,7 @@ class ReadyListener extends Listener {
 
 	exec() {
 		Logger.info(`${this.client.user.tag} is ready to serve!`);
-		this.client.user.setActivity(`@${this.client.user.username} help`);
+		this.client.user.setActivity(`@${botName} help`);
 
 		for (const guild of this.client.guilds.values()) {
 			const starboard = new Starboard(guild);

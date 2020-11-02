@@ -1,4 +1,5 @@
 const { Command } = require('discord-akairo');
+const botName = require('../../../config.json').botName;
 
 class GuideCommand extends Command {
 	constructor() {
