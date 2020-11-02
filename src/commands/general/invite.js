@@ -1,13 +1,14 @@
 const { Command } = require('discord-akairo');
+const botName = require('../../../config.json').botName;
 
 class InviteCommand extends Command {
 	constructor() {
-		super('invite', {
-			aliases: ['invite'],
-			category: 'general',
-			clientPermissions: ['EMBED_LINKS'],
-			description: { content: 'Gets the bot invite for Hoshi.' }
-		});
+		super("invite", {
+      aliases: ["invite"],
+      category: "general",
+      clientPermissions: ["EMBED_LINKS"],
+      description: { content: `Gets the bot invite for ${botName}.` },
+    });
 	}
 
 	async fetchInvite() {
@@ -25,9 +26,12 @@ class InviteCommand extends Command {
 	}
 
 	async exec(message) {
-		const embed = this.client.util.embed()
-			.setColor(0xFFAC33)
-			.setDescription(`**[Add Hoshi to your server!](${await this.fetchInvite()})**`);
+		const embed = this.client.util
+      .embed()
+      .setColor(0xffac33)
+      .setDescription(
+        `**[Add ${botName} to your server!](${await this.fetchInvite()})**`
+      );
 
 		return message.util.send({ embed });
 	}

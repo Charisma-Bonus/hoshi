@@ -2,12 +2,14 @@ const { Command } = require('discord-akairo');
 
 class GuideCommand extends Command {
 	constructor() {
-		super('guide', {
-			aliases: ['guide'],
-			category: 'general',
-			clientPermissions: ['EMBED_LINKS'],
-			description: { content: 'Shows information about how to use Hoshi.' }
-		});
+		super("guide", {
+      aliases: ["guide"],
+      category: "general",
+      clientPermissions: ["EMBED_LINKS"],
+      description: {
+        content: `Shows information about how to use ${botName}.`,
+      },
+    });
 	}
 
 	async exec(message) {
@@ -15,9 +17,9 @@ class GuideCommand extends Command {
 
 		const embed = this.client.util.embed()
 			.setColor(0xFFAC33)
-			.setTitle('Guide to Hoshi')
+			.setTitle(`Guide to ${botName}`)
 			.addField('Setup', [
-				'Hoshi requires the following permissions to be usable:',
+				`${botName} requires the following permissions to be usable:`,
 				'- `Read Messages`',
 				'- `Manage Messages`',
 				'- `Read Message History`',
@@ -68,8 +70,8 @@ class GuideCommand extends Command {
 				'This command requires the `Manage Guild` permission to be usable.',
 				'You can also mention the bot to use commands.',
 				'',
-				`For more information about Hoshi, check out \`${prefix}about\` and \`${prefix}stats\`.`,
-				`Invite Hoshi to your server with \`${prefix}invite\`.`
+				`For more information about ${botName}, check out \`${prefix}about\` and \`${prefix}stats\`.`,
+				`Invite ${botName} to your server with \`${prefix}invite\`.`
 			]);
 
 		const shouldReply = message.guild && message.channel.permissionsFor(this.client.user).has('SEND_MESSAGES');

@@ -1,4 +1,5 @@
 const { Command } = require('discord-akairo');
+const botName = require('../../../config.json').botName;
 
 class HelpCommand extends Command {
 	constructor() {
@@ -56,14 +57,14 @@ class HelpCommand extends Command {
 	}
 
 	async execCommandList(message) {
-		const embed = this.client.util.embed()
-			.setColor(0xFFAC33)
-			.addField('Command List',
-				[
-					'This is a list of commands.',
-					'To view details for a command, do `*help <command>`.',
-					'To view the guide which explains how to use Hoshi in depth, use `*guide`.'
-				]);
+		const embed = this.client.util
+      .embed()
+      .setColor(0xffac33)
+      .addField("Command List", [
+        "This is a list of commands.",
+        "To view details for a command, do `*help <command>`.",
+        `To view the guide which explains how to use ${botName} in depth, use \`*guide\`.`,
+      ]);
 
 		for (const category of this.handler.categories.values()) {
 			const title = {
