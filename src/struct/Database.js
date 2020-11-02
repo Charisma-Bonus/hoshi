@@ -4,7 +4,10 @@ const path = require('path');
 const readdir = require('util').promisify(require('fs').readdir);
 const Sequelize = require('sequelize');
 
-const db = new Sequelize(dbURL, { logging: false });
+const db = new Sequelize(dbURL, {
+	dialect: 'postgres',
+	ssl: { require: true, rejectUnauthorized: false }
+});
 
 class Database {
 	static get db() {
